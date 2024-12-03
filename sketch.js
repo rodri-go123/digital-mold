@@ -1,12 +1,26 @@
-let mould
-let particle
+let moulds = []
+let count = 0
 
 function setup() {
-  createCanvas(400, 400);
-  mould = new Mould();
+  createCanvas(window.innerWidth, window.innerHeight)
+  frameRate(24);
+}
+
+function mouseClicked() {
+  moulds.push(new Mould())
+  // moulds[count].show()
+  moulds[count].populate(100)
+  count ++
+
+  // moulds.forEach((mould) => {
+  //   mould.show()
+  //   mould.populate(100)
+  // })
 }
 
 function draw() {
-  background(220);
-  mould.display();
+  moulds.forEach((mould) => {
+    mould.update() // Gradually create particles
+    mould.show()   // Display the mould and its particles
+  })
 }
